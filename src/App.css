@@ -41,14 +41,15 @@
     width: 100%;
     margin-bottom: 40px;
 }
+.header svg{
+    cursor: pointer;
+}
 .title{
     font-size: 26px;
     font-weight: 700;
     letter-spacing: 8px;
     color: #fff;
 }
-
-
 .task-input{
     display: flex;
     background: white;
@@ -75,7 +76,6 @@
 .input:focus{
     outline: none;
 }
-
 .task-show{
     width: 100%;
     margin-top: 16px;
@@ -113,7 +113,6 @@
     justify-content: center;
     background: linear-gradient(to right, rgba(85, 221, 255, 1), rgba(192, 88, 243, 1));
 }
-
 .item{
    display: flex;
    align-items: center;
@@ -121,17 +120,14 @@
    border-bottom: 1px solid #E3E4F1;
    padding-bottom: 20px;
 }
-
 .item svg:hover, .item span:hover{
     cursor: pointer;
 }
-
 .footer{
     display: flex;
     align-items: center;
     justify-content: space-between;
 }
-
 .filter{
     display: flex;
     width: 100%;
@@ -145,15 +141,6 @@
 .clear{
     cursor: pointer;
 }
-
-
-
-
-
-
-
-
-
 
 
 

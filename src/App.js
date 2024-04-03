@@ -6,58 +6,49 @@ import { useState, useEffect } from 'react';
 function App() {
 
   let [day, setDay] = useState(true);
-
-
   let [taskList, setTaskList] = useState([]);
   let [filter, setFilter] = useState('all');
   let [taskText, setTaskText] = useState('');
-
   const [screenWidth, setScreenWidth] = useState(window.innerWidth);
 
   
-
-
-
   const handleResize = () => {
     setScreenWidth(window.innerWidth);
-    classFunc()
-
+    classFunc();
   };
 
   useEffect(() => {
-    
     window.addEventListener('resize', handleResize);
     return () => {
-      
       window.removeEventListener('resize', handleResize);
     };
   }, [screenWidth]);
 
+  
   function addTodo() {
     if (!taskText) {
-      return
+      return;
     }
     const item = {
       checked: false,
       text: taskText
     }
-    setTaskList(oldList => [...oldList, item])
-    setTaskText('')
+    setTaskList(oldList => [...oldList, item]);
+    setTaskText('');
   }
-
 
 
   function checkedTodo(index) {
     const newArr = [...taskList];
     newArr[index].checked = !newArr[index].checked;
-    setTaskList(newArr)
+    setTaskList(newArr);
   }
   
 
   function DeleteTodo(index) {
     const newArr = [...taskList];
     newArr.splice(index, 1);
-    setTaskList(newArr)
+    setTaskList(newArr);
   }
 
   function classFunc(){
@@ -89,25 +80,9 @@ function App() {
 
 
 
-
-
-
-
-
-
-
-
   return (
-    <div className='app' style={{
-      backgroundColor: day ? '#FAFAFA' :
-        '#171823'
-      }}
-    >
-      <div className={classFunc()}
-        
-        
-      >
-      </div>
+    <div className='app' style={{ backgroundColor: day ? '#FAFAFA' : '#171823'}}>
+      <div className={classFunc()}></div>
 
       <div className='container' >
         <div className='header'>
@@ -137,7 +112,6 @@ function App() {
         </div>
 
         <div className='task-show' style={{ backgroundColor: day ? 'white' : '#25273D', color: day ? '#9495A5' : '#767992', boxShadow: day ? '0px 35px 50px -15px rgba(193.64, 195.16, 213.56, 0.50)' : 'none'}}>
-
           <div className='task-list' style={{ color: day ? '#494C6B' : '#C8CBE7' }}>
 
             {filterTasks().map((item, index) => {
@@ -153,7 +127,7 @@ function App() {
                     </div>
                     <span onClick={() => {checkedTodo(index)}} style={{ textDecoration: item.checked ? 'line-through' : 'none' }}>{item.text}</span>
                   </div>
-                  <svg onClick={() => { DeleteTodo(index) }} xmlns="http://www.w3.org/2000/svg" width="18" height="18"><path fill="#494C6B" fill-rule="evenodd" d="M16.97 0l.708.707L9.546 8.84l8.132 8.132-.707.707-8.132-8.132-8.132 8.132L0 16.97l8.132-8.132L0 .707.707 0 8.84 8.132 16.971 0z" /></svg>
+                  <svg onClick={() => { DeleteTodo(index) }} xmlns="http://www.w3.org/2000/svg" width="18" height="18"><path fill= {day ? "#494C6B" : 'white' } fill-rule="evenodd" d="M16.97 0l.708.707L9.546 8.84l8.132 8.132-.707.707-8.132-8.132-8.132 8.132L0 16.97l8.132-8.132L0 .707.707 0 8.84 8.132 16.971 0z" /></svg>
                 </li>
               )
             })
@@ -205,9 +179,7 @@ function App() {
           }}>Completed</div>
 
         </div>
-
-        <div style={{ marginTop: '40px', color: day ? '#9495A5' : '#5B5E7E'}}>Drag and drop to reorder list</div>
-        
+        <div style={{ marginTop: '40px', color: day ? '#9495A5' : '#5B5E7E'}}>Drag and drop to reorder list</div> 
       </div>
     </div>
   );
